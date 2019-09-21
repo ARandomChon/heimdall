@@ -11,7 +11,6 @@ import json
 import os
 
 STANDARD_GRAVITY = 9.80665
-EARTH_MASS = 5.972*10**24
 
 def Rocket_Equation_Velocity(mass_of_payload, wet_mass, dry_mass, Specific_Impulse):
     mass_of_payload = float(mass_of_payload)
@@ -45,18 +44,14 @@ def Rocket_Equation_Velocity(mass_of_payload, wet_mass, dry_mass, Specific_Impul
     return delta_V
 
 
-def localGravity(altitude, objectmass):
+def orbitalVelocity(altitude):
     """
-    Calculate force of gravity from earth at a given altitude
+    Returns the orbital velocity needed to maintain an orbit
     """
-    G = CONSTANTS["Universal_Constants"]["GRAV_CONST"]
-    EMass = EARTH_MASS
-    ERadius = CONSTANTS["Earth_Constants"]["EQ_RAD_EARTH"]
-    return (G * EMass * objectmass)/((ERadius + altitude)**2)
+    REarth = CONSTANTS["Earth_Constants"]["EQ_RAD_EARTH"]
+    g = STANDARD_GRAVITY
+    return math.sqrt((g * REarth**2) / (REarth + altitude))
 
-
-def horizontalVelocity(altitude, objectmass):
-    return math.sqrt()
 
 CONSTANTS = {}
 #Get Constants
@@ -64,4 +59,4 @@ for filename in os.listdir("Constants"):
     with open("Constants/" + filename, "r") as fd:
         CONSTANTS[filename.split(".")[0]] = json.load(fd)
 
-print(localGravity(0, 1))
+print(orbitalVelocity(200000))
