@@ -17,9 +17,9 @@ def runFunction(func):
     sig = inspect.signature(func)
     values = []
     for parameter in sig.parameters.keys():
-        values.append(input(parameter + ": "))
+        values.append(int(input(parameter + ": ")))
 
-    func(*values)
+    print(func(*values))
 
 
 def getFunctions(module):
