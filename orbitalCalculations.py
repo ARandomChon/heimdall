@@ -13,14 +13,12 @@ import os
 STANDARD_GRAVITY = 9.80665
 EARTH_MASS = 5.792 * 10**24
 
+
 def Rocket_Equation_Velocity(mass_of_payload, wet_mass, dry_mass, Specific_Impulse):
     mass_of_payload = float(mass_of_payload)
     wet_mass = float(wet_mass)
     dry_mass = float(dry_mass)
     Specific_Impulse = float(Specific_Impulse)
-
-
-def Rocket_Equation_Velocity(mass_of_payload, wet_mass, dry_mass, Specific_Impulse):
     # we calculate the total mass here as we assume that the rocket mass does not include the weight of the payload
     total_mass = wet_mass + mass_of_payload
     # Ve of the RTsiolkovsky rocket equation can be calculated by multiplying
