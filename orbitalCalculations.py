@@ -11,10 +11,6 @@ import math
 STANDARD_GRAVITY = 9.80665
 
 
-def get_inputs(latitude, longitude):
-    print()
-
-
 def Rocket_Equation_Velocity(mass_of_payload, wet_mass, dry_mass, Specific_Impulse):
     mass_of_payload = float(mass_of_payload)
     wet_mass = float(wet_mass)
