@@ -7,15 +7,24 @@ orbital-calculations.py
 Functions to calculate various numbers
 """
 import math
+import json
+import os
 
 STANDARD_GRAVITY = 9.80665
-
+EARTH_MASS = 5.972*10**24
 
 def Rocket_Equation_Velocity(mass_of_payload, wet_mass, dry_mass, Specific_Impulse):
     mass_of_payload = float(mass_of_payload)
     wet_mass = float(wet_mass)
     dry_mass = float(dry_mass)
     Specific_Impulse = float(Specific_Impulse)
+
+
+def get_inputs(latitude, longitude):
+    print()
+
+
+def Rocket_Equation_Velocity(mass_of_payload, wet_mass, dry_mass, Specific_Impulse):
     # we calculate the total mass here as we assume that the rocket mass does not include the weight of the payload
     total_mass = wet_mass + mass_of_payload
     # Ve of the RTsiolkovsky rocket equation can be calculated by multiplying
@@ -28,7 +37,31 @@ def Rocket_Equation_Velocity(mass_of_payload, wet_mass, dry_mass, Specific_Impul
     print("The delta-v needed to enter orbit is: ", delta_V, "m/s")
     Energy_needed_for_orbit = (1/2)*total_mass*delta_V*delta_V
     print("The magnitude of energy needed to enter orbit is : ", Energy_needed_for_orbit, "Joules")
+    velocity = Specific_Impulse*STANDARD_GRAVITY
+    # The log of the total wet mass to the dry mass will be calculated thus:
+    log_of_wet_to_dry_mass = math.log(total_mass/dry_mass)
+    # Thus the equation's delta - v can be calculated by multiplying log and the velocity
+    delta_V = velocity*log_of_wet_to_dry_mass
+    return delta_V
 
 
+def localGravity(altitude, objectmass):
+    """
+    Calculate force of gravity from earth at a given altitude
+    """
+    G = CONSTANTS["Universal_Constants"]["GRAV_CONST"]
+    EMass = EARTH_MASS
+    ERadius = CONSTANTS["Earth_Constants"]["EQ_RAD_EARTH"]
+    return (G * EMass * objectmass)/((ERadius + altitude)**2)
 
 
+def horizontalVelocity(altitude, objectmass):
+    return math.sqrt()
+
+CONSTANTS = {}
+#Get Constants
+for filename in os.listdir("Constants"):
+    with open("Constants/" + filename, "r") as fd:
+        CONSTANTS[filename.split(".")[0]] = json.load(fd)
+
+print(localGravity(0, 1))

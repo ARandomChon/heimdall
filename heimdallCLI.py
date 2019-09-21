@@ -30,7 +30,7 @@ def getFunctions(module):
     allFuncs = inspect.getmembers(module)
     funcs = {}
     for func in allFuncs:
-        if not func[0].startswith("__"):
+        if not func[0].startswith("__") and type(func[1]) == type(main):
             funcs[func[0]] = func[1]
 
     return funcs
