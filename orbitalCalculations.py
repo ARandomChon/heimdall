@@ -11,6 +11,7 @@ import json
 import os
 
 STANDARD_GRAVITY = 9.80665
+EARTH_MASS = 5.792 * 10**24
 
 def Rocket_Equation_Velocity(mass_of_payload, wet_mass, dry_mass, Specific_Impulse):
     mass_of_payload = float(mass_of_payload)
@@ -73,6 +74,16 @@ def Orbital_Period(target_altitude):
     print("The same time in hours is   : ", times/(60*60))
     print("The same time in days is    : ", times/(60*60*24))
     return times
+
+
+def hohmannElliptical(altitudeStart, altitudeEnd):
+    """
+    Calculate the delta v needed to enter
+    elliptical Hohmann transfer orbit
+    """
+    mu = CONSTANTS["Universal_Constants"]["GRAV_CONST"] * EARTH_MASS
+    return math.sqrt(mu/altitudeStart) * (math.sqrt(2*altitudeEnd/(altitudeStart + altitudeEnd)) - 1)
+
 
 CONSTANTS = {}
 #Get Constants
