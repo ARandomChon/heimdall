@@ -52,6 +52,15 @@ def orbitalVelocity(altitude):
     g = STANDARD_GRAVITY
     return math.sqrt((g * REarth**2) / (REarth + altitude))
 
+def get_Launch_Coordinates():
+    latitude = input("Please enter the latitude of launch location")
+    longitude = input("Please enter the longitude of launch location")
+
+# method that takes in velocity and distance or target altitude and spit sout time to establish earth orbit
+# redo the main method to handle ona  lop and calll some methods sequentially
+# Once we have location of launch, orbital velocity, period, find out how to track location build model
+# possible GUI
+
 
 def Orbital_Period(target_altitude):
     denominator = STANDARD_GRAVITY*(CONSTANTS["Earth_Constants"]["EQ_RAD_EARTH"]**2)
