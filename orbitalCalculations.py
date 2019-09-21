@@ -53,6 +53,18 @@ def orbitalVelocity(altitude):
     return math.sqrt((g * REarth**2) / (REarth + altitude))
 
 
+def Orbital_Period(target_altitude):
+    denominator = STANDARD_GRAVITY*(CONSTANTS["Earth_Constants"]["EQ_RAD_EARTH"]**2)
+    numerator = 4*(CONSTANTS["Universal_Constants"]["PI"]**2)*((CONSTANTS["Earth_Constants"]["EQ_RAD_EARTH"] +
+                                                                target_altitude)**3)
+    fraction = numerator/denominator
+    times = math.sqrt(fraction)
+    print("Orbital period of the given body at altitude ", target_altitude, " is :", math.sqrt(fraction), "seconds")
+    print("the same time in minutes is : ", times/60)
+    print("The same time in hours is   : ", times/(60*60))
+    print("The same time in days is    : ", times/(60*60*24))
+    return times
+
 CONSTANTS = {}
 #Get Constants
 for filename in os.listdir("Constants"):
