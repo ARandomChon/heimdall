@@ -1,6 +1,6 @@
 {
   "MASS_MARS" : 6.39E23,
-  "EQ_RAD_MARS" : 3.3895E3
+  "EQ_RAD_MARS" : 3.3895E3,
 
   "LONG_ASCEND_NODE" : {
       "ADDER" : 49.5574,
@@ -23,3 +23,4 @@
       "ADDER" : 18.6021,
       "MULTPLIER" : 0.5240207766
   }
+}
