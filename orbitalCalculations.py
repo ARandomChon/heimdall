@@ -15,6 +15,15 @@ EARTH_MASS = 5.792 * 10**24
 
 
 def Rocket_Equation_Velocity(mass_of_payload, wet_mass, dry_mass, Specific_Impulse):
+    """
+    This is a rudimentary rocket equation calculator that returns the velocity change without accounting for
+    gravitational or aerodynamic gravity
+    :param mass_of_payload:
+    :param wet_mass:
+    :param dry_mass:
+    :param Specific_Impulse:
+    :return: the change in velocity needed
+    """
     mass_of_payload = float(mass_of_payload)
     wet_mass = float(wet_mass)
     dry_mass = float(dry_mass)
@@ -47,13 +56,13 @@ def orbitalVelocity(altitude):
     g = STANDARD_GRAVITY
     return math.sqrt((g * REarth**2) / (REarth + altitude))
 
-# method that takes in velocity and distance or target altitude and spit sout time to establish earth orbit
-# redo the main method to handle ona  lop and calll some methods sequentially
-# Once we have location of launch, orbital velocity, period, find out how to track location build model
-# possible GUI
-
-
 def Orbital_Period(target_altitude):
+    """
+    This method calculates the time period of te satellite's orbital path
+    In other words it tells you how long the satellite takes to orbit the earth once
+    :param target_altitude:
+    :return: the time taken in seconds
+    """
     denominator = STANDARD_GRAVITY*(CONSTANTS["Earth_Constants"]["EQ_RAD_EARTH"]**2)
     numerator = 4*(CONSTANTS["Universal_Constants"]["PI"]**2)*((CONSTANTS["Earth_Constants"]["EQ_RAD_EARTH"] +
                                                                 target_altitude)**3)
@@ -70,6 +79,7 @@ def hohmannElliptical(altitudeStart, altitudeEnd):
     """
     Calculate the delta v needed to enter
     elliptical Hohmann transfer orbit
+    Returns the increase in velocity needed to enter the Hohmann transfer orbit
     """
     mu = CONSTANTS["Universal_Constants"]["GRAV_CONST"] * EARTH_MASS
     return math.sqrt(mu/altitudeStart) * (math.sqrt(2*altitudeEnd/(altitudeStart + altitudeEnd)) - 1)
