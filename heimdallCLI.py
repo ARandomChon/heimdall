@@ -22,8 +22,32 @@ def runFunction(func):
     func(*values)
 
 
+def getFunctions(module):
+    """
+    Returns a list of the functions of a module
+    Format: (function name, reference to function)
+    """
+    allFuncs = inspect.getmembers(module)
+    funcs = {}
+    for func in allFuncs:
+        if not func[0].startswith("__"):
+            funcs[func[0]] = func[1]
+
+    return funcs
+
+
 def main():
-    pass
+    funcs = getFunctions(orbitalCalculations)
+    print("Available Functions:")
+    for func in funcs:
+        print(func)
+
+    choice = input("Choose a function to run: ")
+    if not choice in funcs:
+        print("Invalid function")
+        return
+
+    runFunction(funcs[choice])
 
 
 if __name__ == "__main__":
