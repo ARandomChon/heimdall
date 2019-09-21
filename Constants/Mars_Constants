@@ -1,4 +1,25 @@
 {
   "MASS_MARS" : 6.39E23,
   "EQ_RAD_MARS" : 3.3895E3
-}
+
+  "LONG_ASCEND_NODE" : {
+      "ADDER" : 49.5574,
+      "MULTIPLIER" : 2.11081e-5
+  },
+  "INCLINATION_TO_ECLIPTIC" : {
+      "ADDER" : 1.8497,
+      "MULTIPLIER" : 1.78e-8
+  },
+  "ARG_OF_PERI" : {
+      "ADDER" : 286.5016,
+      "MULTIPLIER" : 2.92961e-5
+  },
+  "MEAN_DIST_SUN" : 1.523688,
+  "ECCENTRICITY" : {
+      "ADDER" : 0.093405,
+      "MULTPLIER" : 2.516e-9
+  },
+  "MEAN_ANOMALY" : {
+      "ADDER" : 18.6021,
+      "MULTPLIER" : 0.5240207766
+  }
