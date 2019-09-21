@@ -68,7 +68,7 @@ def Orbital_Period(target_altitude):
 CONSTANTS = {}
 #Get Constants
 for filename in os.listdir("Constants"):
-    with open("Constants/" + filename, "r") as fd:
-        CONSTANTS[filename.split(".")[0]] = json.load(fd)
+    if filename.endswith(".json"):
+        with open("Constants/" + filename, "r", encoding="utf-8") as fd:
+            CONSTANTS[filename.split(".")[0]] = json.load(fd)
 
-print(orbitalVelocity(200000))
