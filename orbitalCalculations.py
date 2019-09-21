@@ -20,10 +20,6 @@ def Rocket_Equation_Velocity(mass_of_payload, wet_mass, dry_mass, Specific_Impul
     Specific_Impulse = float(Specific_Impulse)
 
 
-def get_inputs(latitude, longitude):
-    print()
-
-
 def Rocket_Equation_Velocity(mass_of_payload, wet_mass, dry_mass, Specific_Impulse):
     # we calculate the total mass here as we assume that the rocket mass does not include the weight of the payload
     total_mass = wet_mass + mass_of_payload
@@ -52,10 +48,6 @@ def orbitalVelocity(altitude):
     REarth = CONSTANTS["Earth_Constants"]["EQ_RAD_EARTH"]
     g = STANDARD_GRAVITY
     return math.sqrt((g * REarth**2) / (REarth + altitude))
-
-def get_Launch_Coordinates():
-    latitude = input("Please enter the latitude of launch location")
-    longitude = input("Please enter the longitude of launch location")
 
 # method that takes in velocity and distance or target altitude and spit sout time to establish earth orbit
 # redo the main method to handle ona  lop and calll some methods sequentially
