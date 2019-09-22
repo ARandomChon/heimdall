@@ -26,7 +26,8 @@ def runFunction(func):
     for parameter in sig.parameters.keys():
         values.append(float(input(descriptions[parameter] + ": ")))
 
-    print(func(*values))
+    print("Result: {} {}".format(func(*values), descriptions["return"]))
+    input("Press ENTER to continue")
 
 
 def getFunctions(module):

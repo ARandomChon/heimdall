@@ -20,6 +20,7 @@ def Rocket_Equation_Velocity(mass_of_payload, wet_mass, dry_mass, Specific_Impul
     wet_mass:Wet Mass(kg)
     dry_mass:Dry Mass(kg)
     specific_impulse:Specific Impulse(seconds)
+    return:m/s
 
     This is a rudimentary rocket equation calculator that returns the velocity change without accounting for
     gravitational or aerodynamic gravity
@@ -52,6 +53,7 @@ def Rocket_Equation_Velocity(mass_of_payload, wet_mass, dry_mass, Specific_Impul
 def orbitalVelocity(altitude):
     """
     altitude:Altitude(m)
+    return:m/s
 
     Returns the orbital velocity needed to maintain an orbit
     """
@@ -63,6 +65,7 @@ def orbitalVelocity(altitude):
 def Orbital_Period(target_altitude):
     """
     target_altitude:Target Altitude(m)
+    return:seconds
 
     This method calculates the time period of te satellite's orbital path
     In other words it tells you how long the satellite takes to orbit the earth once
@@ -85,6 +88,7 @@ def hohmannElliptical(distToSun1, distToSun2):
     """
     distToSun1:Distance to Sun(first planet)(m)
     distToSun:Distance to Sun(second planet)(m)
+    return:m/s
 
     Calculate the delta v needed to enter
     elliptical Hohmann transfer orbit
@@ -98,6 +102,7 @@ def LEOdeltaV(specificImpulse, timeBurning):
     """
     specificImpulse:Specific Impulse(seconds)
     timeBurning:Time Burning(seconds)
+    return:m/s
 
     Returns deltaV needed to achieve Low Earth Orbit
     """
@@ -106,6 +111,8 @@ def LEOdeltaV(specificImpulse, timeBurning):
 
 def Time_to_higher_orbit():
     """
+    return:seconds
+
     This method calculates the time taken by the satellite to move to the higher orbit
     This is currently hardcoded for travel between earth and mars
     :return:
@@ -121,18 +128,21 @@ def Time_to_higher_orbit():
 
 def target_angular_velocity():
     """
+    return:???
+
     This method calculates the target angular velocity needed to reach a given target planet
     :return:
     """
     r1 = CONSTANTS["Universal_Constants"]["ASTRONOMICAL_UNIT"]
     r2 = r1 * 1.524
     w2 = math.sqrt((CONSTANTS["Universal_Constants"]["GRAV_CONST"] * EARTH_MASS)/(r2**3))
-    print("The target angular velocity is: ", w2)
     return w2
 
 
 def angular_alignment():
     """
+    return:degrees
+
     This method calculates the angular alignment between earth and mars under ideal hohmann transfer conditions
     This method will return a constant value, but it is useful to use to check if the angular alignment is equivalent
     to the calculated correct value
@@ -142,7 +152,6 @@ def angular_alignment():
     angular_velocity = target_angular_velocity()
     alpha = CONSTANTS["Universal_Constants"]["PI"] - angular_velocity*time
     degree_alpha = (alpha*180)/CONSTANTS["Universal_Constants"]["PI"]
-    print("The angular alignment between earth and mars is : ", degree_alpha)
     return degree_alpha
 
 
