@@ -4,7 +4,7 @@ Authors: Sri Kamal Chillarage, kvc9128@rit.edu
          Sean Bergen, sdb2139@rit.edu
          Copyright 2019
 heimdall-cli.py
-Text interface to for end user
+Text interface for end user
 """
 import inspect
 import orbitalCalculations
@@ -27,6 +27,7 @@ def runFunction(func):
         values.append(float(input(descriptions[parameter] + ": ")))
 
     print("Result: {} {}".format(func(*values), descriptions["return"]))
+    print()
     input("Press ENTER to continue")
     print()
 
