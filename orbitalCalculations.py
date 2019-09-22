@@ -16,12 +16,13 @@ EARTH_MASS = 5.792 * 10 ** 24
 
 def Rocket_Equation_Velocity(mass_of_payload, wet_mass, dry_mass, Specific_Impulse):
     """
+    mass_of_payload:Mass of Payload(kg)
+    wet_mass:Wet Mass(kg)
+    dry_mass:Dry Mass(kg)
+    specific_impulse:Specific Impulse(seconds)
+
     This is a rudimentary rocket equation calculator that returns the velocity change without accounting for
     gravitational or aerodynamic gravity
-    :param mass_of_payload:
-    :param wet_mass:
-    :param dry_mass:
-    :param Specific_Impulse:
     :return: the change in velocity needed
     """
     mass_of_payload = float(mass_of_payload)
@@ -50,6 +51,8 @@ def Rocket_Equation_Velocity(mass_of_payload, wet_mass, dry_mass, Specific_Impul
 
 def orbitalVelocity(altitude):
     """
+    altitude:Altitude(m)
+
     Returns the orbital velocity needed to maintain an orbit
     """
     REarth = CONSTANTS["Earth_Constants"]["EQ_RAD_EARTH"]
@@ -59,6 +62,8 @@ def orbitalVelocity(altitude):
 
 def Orbital_Period(target_altitude):
     """
+    target_altitude:Target Altitude(m)
+
     This method calculates the time period of te satellite's orbital path
     In other words it tells you how long the satellite takes to orbit the earth once
     :param target_altitude:
@@ -78,6 +83,9 @@ def Orbital_Period(target_altitude):
 
 def hohmannElliptical(distToSun1, distToSun2):
     """
+    distToSun1:Distance to Sun(first planet)(m)
+    distToSun:Distance to Sun(second planet)(m)
+
     Calculate the delta v needed to enter
     elliptical Hohmann transfer orbit
     Returns the increase in velocity needed to enter the Hohmann transfer orbit
@@ -88,6 +96,9 @@ def hohmannElliptical(distToSun1, distToSun2):
 
 def LEOdeltaV(specificImpulse, timeBurning):
     """
+    specificImpulse:Specific Impulse(seconds)
+    timeBurning:Time Burning(seconds)
+
     Returns deltaV needed to achieve Low Earth Orbit
     """
     return specificImpulse * STANDARD_GRAVITY * math.log(10) - STANDARD_GRAVITY * timeBurning
