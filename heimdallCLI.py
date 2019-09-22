@@ -28,6 +28,7 @@ def runFunction(func):
 
     print("Result: {} {}".format(func(*values), descriptions["return"]))
     input("Press ENTER to continue")
+    print()
 
 
 def getFunctions(module):
@@ -53,12 +54,14 @@ def main():
             print("\t" + func)
 
         choice = input("Choose a function to run: ")
+        if choice == "exit":
+            break
+
         if not choice in funcs:
             print("Invalid function")
             continue
 
         runFunction(funcs[choice])
-        print()
 
 
 if __name__ == "__main__":
