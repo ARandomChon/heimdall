@@ -1,4 +1,4 @@
-# heimdall
+# HEIMDALL
 
 this project used a number of different sources for the purposes of Orbital
 Calculations.
