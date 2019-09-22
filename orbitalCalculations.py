@@ -88,7 +88,7 @@ def hohmannElliptical(altitudeStart, altitudeEnd):
 
 def Time_to_higher_orbit():
     """
-    This method calculates the time taken by the satellite to move to te higher orbit
+    This method calculates the time taken by the satellite to move to the higher orbit
     This is currently hardcoded for travel between earth and mars
     :return:
     """
