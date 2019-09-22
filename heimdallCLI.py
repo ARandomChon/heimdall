@@ -14,10 +14,17 @@ def runFunction(func):
     Get the values of a function's parameters
     from the user and pass them to the function
     """
+    descriptions = {}
+    for line in inspect.getdoc(func).split("\n"):
+        if line == "":
+            break
+        parts = line.split(":")
+        descriptions[parts[0]] = parts[1]
+
     sig = inspect.signature(func)
     values = []
     for parameter in sig.parameters.keys():
-        values.append(float(input(parameter + ": ")))
+        values.append(float(input(descriptions[parameter] + ": ")))
 
     print(func(*values))
 
@@ -37,7 +44,8 @@ def getFunctions(module):
 
 
 def main():
-    while True:
+    choice = ""
+    while choice != "exit":
         funcs = getFunctions(orbitalCalculations)
         print("Available Functions:")
         for func in funcs:
