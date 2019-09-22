@@ -75,14 +75,21 @@ def Orbital_Period(target_altitude):
     return times
 
 
-def hohmannElliptical(altitudeStart, altitudeEnd):
+def hohmannElliptical(distToSun1, distToSun2):
     """
     Calculate the delta v needed to enter
     elliptical Hohmann transfer orbit
     Returns the increase in velocity needed to enter the Hohmann transfer orbit
     """
     mu = CONSTANTS["Universal_Constants"]["GRAV_CONST"] * EARTH_MASS
-    return math.sqrt(mu/altitudeStart) * (math.sqrt(2*altitudeEnd/(altitudeStart + altitudeEnd)) - 1)
+    return math.sqrt(mu/distToSun1) * (math.sqrt(2*distToSun2/(distToSun1 + distToSun2)) - 1)
+
+
+def LEOdeltaV(specificImpulse, timeBurning):
+    """
+    Returns deltaV needed to achieve Low Earth Orbit
+    """
+    return specificImpulse * STANDARD_GRAVITY * math.log(10) - STANDARD_GRAVITY * timeBurning
 
 
 CONSTANTS = {}
